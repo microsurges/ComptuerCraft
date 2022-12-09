@@ -1,4 +1,4 @@
-X = arg[1];
+X = tonumber(arg[1]);
 
 SLOT_COUNT = 16;
 NON_ESSENTIALS = {
