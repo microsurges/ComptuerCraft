@@ -2,9 +2,9 @@ SLOT_COUNT = 16;
 
 function ItemIndex(ItemString)
     for i = 1, SLOT_COUNT, 1 do
-        local information = turtle.getItemDetail(i);
+        local information = turtle.getItemDetail(i, true);
         if information ~= nil then
-            print(information);
+            print(type(information.name), ItemString);
             if information.name == ItemString then
                 return i;
             end    
