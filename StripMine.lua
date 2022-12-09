@@ -64,7 +64,7 @@ function StripMine()
     turtle.digUp();
 end
 
-function Test()
+function Main()
     local length = X;
     CheckFuel();
 
@@ -76,26 +76,6 @@ function Test()
     for i = length, 1, -1 do
         turtle.back();
     end
-    -- turtle.refuel();
-    -- local turtlefuel = turtle.getFuelLevel();
-    -- if turtlefuel >= 0 then
-    --     print("Enough fuel for turtle");
-    -- else
-    --     print("Not enough fuel for turtle");
-    -- end
-
-    -- while length > 0 do
-    --     turtle.digDown();
-    --     turtle.down();
-    --     turtle.dig();
-    --     turtle.forward();
-    --     length = length - 1;
-    -- end
 end
 
-Test();
-
--- TODO: 
--- have the turtle then loop through and dig down to y = 11
--- mine it if it is some type of ore and follow the vein
--- on each loop check the fuel level and see if it needs to be refueled if it needs refueled then loop through all the slots and refuel
+Main();
