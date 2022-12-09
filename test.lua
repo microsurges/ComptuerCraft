@@ -4,10 +4,9 @@ function ItemIndex(ItemString)
     for i = 1, SLOT_COUNT, 1 do
         local information = turtle.getItemDetail(i, true);
         if information ~= nil then
-            print(type(information.name), type(ItemString));
             if information.name == ItemString then
                 return i;
-            end    
+            end
         end
     end
 end
@@ -16,7 +15,7 @@ end
 function Test()
     local length = 5;
 
-    print(ItemIndex("minecraft:hardend_clay"));
+    print(ItemIndex("minecraft:hardened_clay"));
 
     turtle.refuel();
     local turtlefuel = turtle.getFuelLevel();
