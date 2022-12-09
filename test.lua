@@ -4,7 +4,7 @@ function ItemIndex(ItemString)
     for i = 1, SLOT_COUNT, 1 do
         local information = turtle.getItemDetail(i, true);
         if information ~= nil then
-            print(type(information.name), ItemString);
+            print(type(information.name), type(ItemString));
             if information.name == ItemString then
                 return i;
             end    
