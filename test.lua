@@ -1,5 +1,7 @@
+X = arg[1];
+
 SLOT_COUNT = 16;
-NonEssentials = {
+NON_ESSENTIALS = {
     "minecraft:granite",
     "minecraft:diorite",
     "minecraft:andesite",
@@ -29,11 +31,11 @@ function ItemIndex(ItemString)
 end
 
 function PurgeNonEssentials()
-    for i = 1, #NonEssentials, 1 do
+    for i = 1, #NON_ESSENTIALS, 1 do
         for j = 1, SLOT_COUNT, 1 do
             local itemIndex = turtle.getItemDetail(j, true);
             if itemIndex ~= nil then
-                if itemIndex.name == NonEssentials[i] then
+                if itemIndex.name == NON_ESSENTIALS[i] then
                     turtle.select(j);
                     turtle.drop();
                 end
@@ -42,10 +44,33 @@ function PurgeNonEssentials()
     end
 end
 
-function Test()
-    local length = 5;
-    PurgeNonEssentials();
+function CheckFuel()
+    if turtle.getFuelLevel < X then
+        local fuelIndex = ItemIndex("minecraft:coal");
+        if fuelIndex == nil then
+            print("You have no Fuel");
+        else 
+            turtle.select(fuelIndex);
+            turtle.refuel();
+        end
+    end
+end
 
+function StripMine()
+    turtle.dig();
+    turtle.forward();
+    turtle.digDown();
+    turtle.digUp();
+end
+
+function Test()
+    local length = X;
+    CheckFuel();
+
+    for i = length, 1, -1 do
+        StripMine();
+        PurgeNonEssentials();
+    end
     -- turtle.refuel();
     -- local turtlefuel = turtle.getFuelLevel();
     -- if turtlefuel >= 0 then
@@ -69,7 +94,7 @@ Test();
 -- have the turtle check for availible fuel going through all slots
 -- have the turtle then loop through and dig down to y = 11
 -- have the turtle start strip mining in all x directions 
--- checking if the block is not stone, dirt, gravel, coble stone, andiasite, diarite, granite and mine it if it is some type of ore and follow the vein
+-- mine it if it is some type of ore and follow the vein
 -- on each loop check the fuel level and see if it needs to be refueled if it needs refueled then loop through all the slots and refuel
 -- check to make sure that the turtle can make it back to the area where it was started
 -- check where the turtle was started and move to that area when it is running low on fuel
