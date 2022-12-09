@@ -46,7 +46,7 @@ function PurgeNonEssentials()
 end
 
 function CheckFuel()
-    while turtle.getFuelLevel() < X * 2 do
+    while turtle.getFuelLevel() < X * X do
         local fuelIndex = ItemIndex("minecraft:coal");
         if fuelIndex == nil then
             print("You have no Fuel");
