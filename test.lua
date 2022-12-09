@@ -3,8 +3,8 @@ SLOT_COUNT = 16;
 function ItemIndex(ItemString)
     for i = 1, SLOT_COUNT, 1 do
         local information = turtle.getItemDetail(i);
-        print(information);
         if information ~= nil then
+            print(information);
             if information.name == ItemString then
                 return i;
             end    
