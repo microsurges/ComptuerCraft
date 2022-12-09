@@ -1,5 +1,22 @@
 SLOT_COUNT = 16;
+NonEssentials = {
+    "minecraft:granite",
+    "minecraft:diorite",
+    "minecraft:andesite",
+    "minecraft:grass_block",
+    "minecraft:dirt",
+    "minecraft:cobblestone",
+    "minecraft:sand",
+    "minecraft:gravel",
+    "minecraft:sandstone",
+    "minecraft:mossy_cobblestone",
+    "minecraft:stone_bricks",
+    "minecraft:mossy_stone_bricks",
+    "minecraft:cracked_stone_bricks",
+    };
 
+
+-- Example ItemIndex("minecraft:hardened_clay")
 function ItemIndex(ItemString)
     for i = 1, SLOT_COUNT, 1 do
         local information = turtle.getItemDetail(i, true);
@@ -11,27 +28,39 @@ function ItemIndex(ItemString)
     end
 end
 
+function PurgeNonEssentials()
+    for i = 1, #NonEssentials, 1 do
+        for j = 1, SLOT_COUNT, 1 do
+            local itemIndex = turtle.getItemDetail(j, true);
+            if itemIndex ~= nil then
+                if itemIndex.name == NonEssentials[i] then
+                    turtle.select(j);
+                    turtle.drop();
+                end
+            end
+        end
+    end
+end
 
 function Test()
     local length = 5;
+    PurgeNonEssentials();
 
-    print(ItemIndex("minecraft:hardened_clay"));
+    -- turtle.refuel();
+    -- local turtlefuel = turtle.getFuelLevel();
+    -- if turtlefuel >= 0 then
+    --     print("Enough fuel for turtle");
+    -- else
+    --     print("Not enough fuel for turtle");
+    -- end
 
-    turtle.refuel();
-    local turtlefuel = turtle.getFuelLevel();
-    if turtlefuel >= 0 then
-        print("Enough fuel for turtle");
-    else
-        print("Not enough fuel for turtle");
-    end
-
-    while length > 0 do
-        turtle.digDown();
-        turtle.down();
-        turtle.dig();
-        turtle.forward();
-        length = length - 1;
-    end
+    -- while length > 0 do
+    --     turtle.digDown();
+    --     turtle.down();
+    --     turtle.dig();
+    --     turtle.forward();
+    --     length = length - 1;
+    -- end
 end
 
 Test();
