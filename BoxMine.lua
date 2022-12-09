@@ -57,16 +57,20 @@ function CheckFuel()
     end
 end
 
+function StripMine()
+    turtle.dig();
+    turtle.forward();
+    turtle.digDown();
+    turtle.digUp();
+end
+
 function BoxMine()
     for i = 1, X, 1 do
         for j = 1, X - 1, 1 do
-            turtle.dig();
-            turtle.forward();
-            turtle.digDown();
-            turtle.digUp();
+            StripMine();
         end
         turtle.turnLeft();
-        turtle.forward();
+        StripMine();
         turtle.turnLeft();
         PurgeNonEssentials();  
     end
