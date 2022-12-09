@@ -38,6 +38,7 @@ function PurgeNonEssentials()
                 if itemIndex.name == NON_ESSENTIALS[i] then
                     turtle.select(j);
                     turtle.drop();
+                    turtle.select(1);
                 end
             end
         end
@@ -45,7 +46,7 @@ function PurgeNonEssentials()
 end
 
 function CheckFuel()
-    if turtle.getFuelLevel() < X then
+    while turtle.getFuelLevel() < X * 2 do
         local fuelIndex = ItemIndex("minecraft:coal");
         if fuelIndex == nil then
             print("You have no Fuel");
@@ -70,6 +71,10 @@ function Test()
     for i = length, 1, -1 do
         StripMine();
         PurgeNonEssentials();
+    end
+
+    for i = length, 1, -1 do
+        turtle.back();
     end
     -- turtle.refuel();
     -- local turtlefuel = turtle.getFuelLevel();
