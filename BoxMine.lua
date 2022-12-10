@@ -65,13 +65,16 @@ function StripMine()
 end
 
 function BoxMine()
-    for i = 1, X, 1 do
-        for j = 1, X - 1, 1 do
+    for i = 1, X / 2, 1 do
+        for j = 1, X, 1 do
             StripMine();
         end
         turtle.turnLeft();
         StripMine();
         turtle.turnLeft();
+        for j = 1, X, 1 do
+            StripMine();
+        end
         PurgeNonEssentials();  
     end
 end
