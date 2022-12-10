@@ -75,6 +75,9 @@ function BoxMine()
         for j = 1, X, 1 do
             StripMine();
         end
+        turtle.turnRight();
+        StripMine();
+        turtle.turnRight();
         PurgeNonEssentials();  
     end
 end
