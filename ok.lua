@@ -27,5 +27,8 @@ function getOrientation()
     -- +z = 4
 end
 
-print(getOrientation())
+local direction = getOrientation()
+
+print(direction.x)
+print(direction.z)
 gps.locate()
