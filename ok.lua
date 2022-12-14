@@ -1,8 +1,17 @@
+function Forward(steps)
+    for i = 1, steps do
+        turtle.digUp()
+        turtle.digDown()
+
+        while not turtle.forward() do
+            turtle.dig()
+        end
+    end
+end
+
 function getOrientation()
     location1 = vector.new(gps.locate(2, false))
-    while not turtle.forward() do
-        turtle.dig()
-    end
+    Forward(1)
     location2 = vector.new(gps.locate(2, false))
     heading = location2 - location1
     headingX = location2.x - location1.x
