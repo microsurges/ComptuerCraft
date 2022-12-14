@@ -1,9 +1,9 @@
 function getOrientation()
-    local location1 = vector.new(gps.locate())
+    location1 = vector.new(gps.locate(2, false))
     while not turtle.forward() do
-        turtle.dig() 
+        turtle.dig()
     end
-    local location2 = vector.new(gps.locate())
+    location2 = vector.new(gps.locate(2, false))
     heading = location2 - location1
     headingX = location2.x - location1.x
     headingZ = location2.z - location1.z
