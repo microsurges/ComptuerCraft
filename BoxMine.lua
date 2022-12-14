@@ -1,5 +1,4 @@
 X = tonumber(arg[1]);
-
 SLOT_COUNT = 16;
 NON_ESSENTIALS = {
     "minecraft:granite",
@@ -16,6 +15,7 @@ NON_ESSENTIALS = {
     "minecraft:mossy_stone_bricks",
     "minecraft:cracked_stone_bricks",
     };
+
 
 
 -- Example ItemIndex("minecraft:hardened_clay")
